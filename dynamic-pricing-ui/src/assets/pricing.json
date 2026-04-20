@@ -1,0 +1,28 @@
+{
+  "data": {
+    "embroidered_specials": {
+      "rui": {
+        "default": {
+          "price": [4.52, 4.52, 2.89, 2.89, 2.89, 2.61, 1.98, 1.5],
+          "item_tier": [1, 5, 6, 12, 25, 26, 50, 75],
+          "discount": 6.0
+        },
+        "inserts": {
+          "price": [1.00, 0.80],
+          "item_tier": [1, 50],
+          "discount": 0
+        },
+        "fr": {
+          "price": [2.00, 1.50],
+          "item_tier": [1, 50],
+          "discount": 0
+        },
+        "additional_charge": {
+          "blunt_corners": { "price": 0.14 },
+          "square_corners": { "price": 0.14 },
+          "irregular_shape": { "percentage": 20 }
+        }
+      }
+    }
+  }
+}

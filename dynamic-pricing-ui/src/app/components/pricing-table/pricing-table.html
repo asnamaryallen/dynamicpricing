@@ -1,0 +1,84 @@
+@if (pricing()) {
+  <div class="container">
+    
+    @for (category of categories; track category) {
+      <div class="category-wrapper">
+        
+        <div class="header accordion-header" (click)="toggleSection(category)">
+          <span>{{ category | uppercase }}</span>
+          <span class="toggle-icon">{{ expandedSections()[category] ? '-' : '+' }}</span>
+        </div>
+
+        @if (expandedSections()[category]) {
+          <div class="table-body">
+            <button class="add-btn" (click)="addColumn(category)">+ Add Column</button>
+
+            <div class="tier-row">
+              @for (tier of pricing()[category].item_tier; track $index) {
+                <div class="tier-column">
+                  <div class="tier-number">
+                     <input type="number" [ngModel]="tier" (ngModelChange)="updateTierValue(category, $index, $event)">
+                     <span class="close" (click)="removeColumn(category, $index)">×</span>
+                  </div>
+                  
+                  <p>Price</p>
+                  <input type="text" 
+                         [value]="pricing()[category].price[$index]" 
+                         (input)="updatePrice(category, $index, $any($event.target).value)">
+                </div>
+              }
+            </div>
+
+            <div class="discount-box">
+              <label>Discount *</label>
+              <input type="number" [ngModel]="pricing()[category].discount">
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    <div class="header accordion-header" style="margin-top: 40px;" (click)="toggleSection('additional_charge')">
+      <span>ADDITIONAL CHARGE</span>
+      <span class="toggle-icon">{{ expandedSections()['additional_charge'] ? '-' : '+' }}</span>
+    </div>
+    
+    @if (expandedSections()['additional_charge']) {
+      <div class="table-body">
+        @if (pricing()?.additional_charge?.blunt_corners) {
+          <div class="charge-item">
+            <label>Blunt Corners</label>
+            <div class="input-group">
+               <span>Price *</span>
+               <input type="number" [ngModel]="pricing().additional_charge.blunt_corners.price">
+            </div>
+          </div>
+        }
+        @if (pricing()?.additional_charge?.square_corners) {
+             <div class="charge-item">
+            <label>Square Corners</label>
+            <div class="input-group">
+               <span>Price *</span>
+               <input type="number" [ngModel]="pricing().additional_charge.square_corners.price">
+            </div>
+          </div>
+        }
+
+        @if (pricing()?.additional_charge?.irregular_shape) {
+          <div class="charge-item">
+            <label>Irregular Shape</label>
+            <div class="input-group">
+               <span>Percentage *</span>
+               <input type="number" [ngModel]="pricing().additional_charge.irregular_shape.percentage">
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+  </div>
+} @else {
+  <div class="loading-state">
+    <p>Connecting to pricing service...</p>
+  </div>
+}
