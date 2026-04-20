@@ -15,5 +15,14 @@ A responsive, reactive Angular web application that parses and displays complex,
 
 * **Framework:** Angular (v17/v18)
 * **Architecture:** Standalone Components (Zoneless Change Detection)
+
+
+
+<img width="960" height="534" alt="Screenshot 2026-04-20 200805" src="https://github.com/user-attachments/assets/30fa75c9-b487-489b-b821-ba74ff087620" />
+
+
+<img width="955" height="535" alt="Screenshot 2026-04-20 200836" src="https://github.com/user-attachments/assets/7fd9b6f5-c81c-4324-a7e6-ed35e8f69011" />
+
+
 * **Language:** TypeScript
 * **Styling & Markup:** HTML5, CSS3
